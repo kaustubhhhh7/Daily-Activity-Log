@@ -1,27 +1,55 @@
-name: Daily Activity Update
+name: Daily Learning Automation
 
 on:
   schedule:
-    - cron: "30 4 * * *"   # Runs daily at 10:00 AM IST
+    - cron: "30 4 * * *"   # 10:00 AM IST
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
-  update-log:
+  learning-bot:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Update daily log
+      - name: Backend learning
         run: |
           DATE=$(date '+%Y-%m-%d')
-          echo -e "\n## $DATE\n- Automated daily update" >> logs/daily.md
+          echo -e "\n## $DATE\n- REST APIs use stateless communication for scalability." >> learning/backend.md
+          git add learning/backend.md
+          git commit -m "Backend learning - $DATE"
 
-      - name: Commit and push
+      - name: Automation learning
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add .
-          git commit -m "Daily update - $DATE" || echo "No changes"
+          DATE=$(date '+%Y-%m-%d')
+          echo -e "\n## $DATE\n- Automation replaces repetitive manual processes with scripts." >> learning/automation.md
+          git add learning/automation.md
+          git commit -m "Automation learning - $DATE"
+
+      - name: DevOps learning
+        run: |
+          DATE=$(date '+%Y-%m-%d')
+          echo -e "\n## $DATE\n- CI/CD pipelines reduce deployment risk." >> learning/devops.md
+          git add learning/devops.md
+          git commit -m "DevOps learning - $DATE"
+
+      - name: Security learning
+        run: |
+          DATE=$(date '+%Y-%m-%d')
+          echo -e "\n## $DATE\n- Authentication confirms identity, authorization controls access." >> learning/security.md
+          git add learning/security.md
+          git commit -m "Security learning - $DATE"
+
+      - name: Summary commit
+        run: |
+          DATE=$(date '+%Y-%m-%d')
+          echo -e "\n## $DATE\n- Learned backend, automation, DevOps, and security basics." >> learning/summary.md
+          git add learning/summary.md
+          git commit -m "Daily summary - $DATE"
+
+      - name: Push all commits
+        run: |
           git push
