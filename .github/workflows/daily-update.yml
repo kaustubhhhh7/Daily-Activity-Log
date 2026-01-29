@@ -15,41 +15,45 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Configure Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
       - name: Backend learning
         run: |
           DATE=$(date '+%Y-%m-%d')
-          echo -e "\n## $DATE\n- REST APIs use stateless communication for scalability." >> learning/backend.md
+          echo -e "\n## $DATE\n- REST APIs are stateless and scalable." >> learning/backend.md
           git add learning/backend.md
-          git commit -m "Backend learning - $DATE"
+          git commit -m "Backend learning - $DATE" || echo "No backend changes"
 
       - name: Automation learning
         run: |
           DATE=$(date '+%Y-%m-%d')
-          echo -e "\n## $DATE\n- Automation replaces repetitive manual processes with scripts." >> learning/automation.md
+          echo -e "\n## $DATE\n- Automation reduces repetitive manual work." >> learning/automation.md
           git add learning/automation.md
-          git commit -m "Automation learning - $DATE"
+          git commit -m "Automation learning - $DATE" || echo "No automation changes"
 
       - name: DevOps learning
         run: |
           DATE=$(date '+%Y-%m-%d')
-          echo -e "\n## $DATE\n- CI/CD pipelines reduce deployment risk." >> learning/devops.md
+          echo -e "\n## $DATE\n- CI/CD enables faster and safer deployments." >> learning/devops.md
           git add learning/devops.md
-          git commit -m "DevOps learning - $DATE"
+          git commit -m "DevOps learning - $DATE" || echo "No devops changes"
 
       - name: Security learning
         run: |
           DATE=$(date '+%Y-%m-%d')
-          echo -e "\n## $DATE\n- Authentication confirms identity, authorization controls access." >> learning/security.md
+          echo -e "\n## $DATE\n- Authorization controls what authenticated users can access." >> learning/security.md
           git add learning/security.md
-          git commit -m "Security learning - $DATE"
+          git commit -m "Security learning - $DATE" || echo "No security changes"
 
-      - name: Summary commit
+      - name: Daily summary
         run: |
           DATE=$(date '+%Y-%m-%d')
-          echo -e "\n## $DATE\n- Learned backend, automation, DevOps, and security basics." >> learning/summary.md
+          echo -e "\n## $DATE\n- Learned backend, automation, DevOps, and security concepts." >> learning/summary.md
           git add learning/summary.md
-          git commit -m "Daily summary - $DATE"
+          git commit -m "Daily summary - $DATE" || echo "No summary changes"
 
-      - name: Push all commits
-        run: |
-          git push
+      - name: Push changes
+        run: git push
