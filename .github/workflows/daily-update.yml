@@ -20,40 +20,94 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name: Backend learning
+      # BACKEND (3 commits)
+      - name: Backend - REST
         run: |
           DATE=$(date '+%Y-%m-%d')
-          echo -e "\n## $DATE\n- REST APIs are stateless and scalable." >> learning/backend.md
+          echo -e "\n## $DATE\n- REST APIs follow stateless client-server architecture." >> learning/backend.md
           git add learning/backend.md
-          git commit -m "Backend learning - $DATE" || echo "No backend changes"
+          git commit -m "Backend: REST basics - $DATE" || echo "No change"
 
-      - name: Automation learning
+      - name: Backend - Auth
         run: |
           DATE=$(date '+%Y-%m-%d')
-          echo -e "\n## $DATE\n- Automation reduces repetitive manual work." >> learning/automation.md
+          echo -e "\n- JWT tokens are commonly used for stateless authentication." >> learning/backend.md
+          git add learning/backend.md
+          git commit -m "Backend: Authentication - $DATE" || echo "No change"
+
+      - name: Backend - Error handling
+        run: |
+          DATE=$(date '+%Y-%m-%d')
+          echo -e "\n- Proper HTTP status codes improve API clarity." >> learning/backend.md
+          git add learning/backend.md
+          git commit -m "Backend: Error handling - $DATE" || echo "No change"
+
+      # AUTOMATION (3 commits)
+      - name: Automation - Basics
+        run: |
+          DATE=$(date '+%Y-%m-%d')
+          echo -e "\n## $DATE\n- Automation removes repetitive manual tasks." >> learning/automation.md
           git add learning/automation.md
-          git commit -m "Automation learning - $DATE" || echo "No automation changes"
+          git commit -m "Automation: Basics - $DATE" || echo "No change"
 
-      - name: DevOps learning
+      - name: Automation - Scripts
         run: |
           DATE=$(date '+%Y-%m-%d')
-          echo -e "\n## $DATE\n- CI/CD enables faster and safer deployments." >> learning/devops.md
+          echo -e "\n- Shell and Python scripts are widely used in automation." >> learning/automation.md
+          git add learning/automation.md
+          git commit -m "Automation: Scripts - $DATE" || echo "No change"
+
+      - name: Automation - Scheduling
+        run: |
+          DATE=$(date '+%Y-%m-%d')
+          echo -e "\n- Cron jobs help schedule automated tasks." >> learning/automation.md
+          git add learning/automation.md
+          git commit -m "Automation: Scheduling - $DATE" || echo "No change"
+
+      # DEVOPS (2 commits)
+      - name: DevOps - CI
+        run: |
+          DATE=$(date '+%Y-%m-%d')
+          echo -e "\n## $DATE\n- Continuous Integration detects bugs early." >> learning/devops.md
           git add learning/devops.md
-          git commit -m "DevOps learning - $DATE" || echo "No devops changes"
+          git commit -m "DevOps: CI - $DATE" || echo "No change"
 
-      - name: Security learning
+      - name: DevOps - CD
         run: |
           DATE=$(date '+%Y-%m-%d')
-          echo -e "\n## $DATE\n- Authorization controls what authenticated users can access." >> learning/security.md
+          echo -e "\n- Continuous Deployment automates releases." >> learning/devops.md
+          git add learning/devops.md
+          git commit -m "DevOps: CD - $DATE" || echo "No change"
+
+      # SECURITY (2 commits)
+      - name: Security - AuthN
+        run: |
+          DATE=$(date '+%Y-%m-%d')
+          echo -e "\n## $DATE\n- Authentication verifies user identity." >> learning/security.md
           git add learning/security.md
-          git commit -m "Security learning - $DATE" || echo "No security changes"
+          git commit -m "Security: Authentication - $DATE" || echo "No change"
 
-      - name: Daily summary
+      - name: Security - AuthZ
         run: |
           DATE=$(date '+%Y-%m-%d')
-          echo -e "\n## $DATE\n- Learned backend, automation, DevOps, and security concepts." >> learning/summary.md
-          git add learning/summary.md
-          git commit -m "Daily summary - $DATE" || echo "No summary changes"
+          echo -e "\n- Authorization defines access levels." >> learning/security.md
+          git add learning/security.md
+          git commit -m "Security: Authorization - $DATE" || echo "No change"
 
-      - name: Push changes
+      # SUMMARY (2 commits)
+      - name: Summary - Learning
+        run: |
+          DATE=$(date '+%Y-%m-%d')
+          echo -e "\n## $DATE\n- Studied backend, automation, DevOps, and security." >> learning/summary.md
+          git add learning/summary.md
+          git commit -m "Summary: Learning log - $DATE" || echo "No change"
+
+      - name: Summary - Reflection
+        run: |
+          DATE=$(date '+%Y-%m-%d')
+          echo -e "\n- Consistency beats intensity in learning." >> learning/summary.md
+          git add learning/summary.md
+          git commit -m "Summary: Reflection - $DATE" || echo "No change"
+
+      - name: Push all commits
         run: git push
