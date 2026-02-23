@@ -135,3 +135,5 @@
 
 ## 2026-02-23
 - Continuous Integration detects bugs early.
+
+- Continuous Deployment automates releases.
