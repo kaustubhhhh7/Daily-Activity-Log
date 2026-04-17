@@ -558,3 +558,5 @@
 
 ## 2026-04-17
 - REST APIs follow stateless client-server architecture.
+
+- JWT tokens are commonly used for stateless authentication.
