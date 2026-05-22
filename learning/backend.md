@@ -800,3 +800,6 @@
 - JWT tokens are commonly used for stateless authentication.
 
 - Proper HTTP status codes improve API clarity.
+
+## 2026-05-22
+- REST APIs follow stateless client-server architecture.
