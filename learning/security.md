@@ -635,3 +635,5 @@
 
 ## 2026-06-03
 - Authentication verifies user identity.
+
+- Authorization defines access levels.
