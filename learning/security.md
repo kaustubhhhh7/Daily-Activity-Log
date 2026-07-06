@@ -800,3 +800,5 @@
 
 ## 2026-07-06
 - Authentication verifies user identity.
+
+- Authorization defines access levels.
