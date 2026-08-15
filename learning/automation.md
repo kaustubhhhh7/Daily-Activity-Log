@@ -1400,3 +1400,5 @@
 - Automation removes repetitive manual tasks.
 
 - Shell and Python scripts are widely used in automation.
+
+- Cron jobs help schedule automated tasks.
