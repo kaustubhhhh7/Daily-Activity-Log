@@ -1468,3 +1468,5 @@
 
 ## 2026-08-25
 - Automation removes repetitive manual tasks.
+
+- Shell and Python scripts are widely used in automation.
