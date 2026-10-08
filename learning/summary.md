@@ -1265,3 +1265,5 @@
 
 ## 2026-10-08
 - Studied backend, automation, DevOps, and security.
+
+- Consistency beats intensity in learning.
